@@ -45,6 +45,9 @@ class _TreeGenerator:
 
         if len(directory.parents) > self.depth:
             pass
+            # TODO: 
+            # calculate how many folders left
+            # add a number after the /
 
         else:
        
@@ -70,7 +73,7 @@ class _TreeGenerator:
 
     def _add_directory(self, directory, index, entries_count, prefix, connector):
 
-        self._tree.append(f"{prefix}{connector}{Colors.FOLDER}{Icons.folder_open}{directory.name}{os.sep}{Colors.END}")
+        self._tree.append(f"{prefix}{connector}{Colors.FOLDER}{Icons.FOLDER_OPEN}{directory.name}{os.sep}{Colors.END}")
 
         if index != entries_count - 1:
             prefix += PIPE_PREFIX
@@ -78,15 +81,15 @@ class _TreeGenerator:
             prefix += SPACE_PREFIX
 
         self._tree_body(directory=directory, prefix=prefix)
-        self._tree.append(prefix.rstrip()) # creates huge gaps between directories
+        #self._tree.append(prefix.rstrip()) # creates huge gaps between directories
 
     def _add_file(self, file, prefix, connector):
 
 
         match Path(file).suffix:
             case '.py':
-                self._tree.append(f"{prefix}{connector}{Colors.PYTHON_YELLOW}{Icons.python}{Colors.PYTHON_BLUE}{file.name}{Colors.END}")
+                self._tree.append(f"{prefix}{connector}{Colors.PYTHON_YELLOW}{Icons.PYTHON}{Colors.PYTHON_BLUE}{file.name}{Colors.END}")
             case '.md':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.markdown}{file.name}{Colors.END}")
+                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.MARKDOWN}{file.name}{Colors.END}")
             case _:
-                self._tree.append(f"{prefix}{connector}{Colors.FILE}{Icons.file}{file.name}{Colors.END}")
+                self._tree.append(f"{prefix}{connector}{Colors.FILE}{Icons.FILE}{file.name}{Colors.END}")
