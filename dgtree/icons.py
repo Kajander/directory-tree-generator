@@ -2,11 +2,11 @@
 
 class Icons:
 
-    folder_close = '  '
-    folder_open = ' ﱮ '
-    file = '  '
-    python = '  '
-    markdown = '  '
+    FOLDER_CLOSE = '  '
+    FOLDER_OPEN = ' ﱮ '
+    FILE = '  '
+    PYTHON = '  '
+    MARKDOWN = '  '
 
 
 
