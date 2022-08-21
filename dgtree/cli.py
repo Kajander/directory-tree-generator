@@ -11,7 +11,6 @@ from .dgtree import DirectoryTree
 
 def main():
     args = parse_cmd_line_arguments()
-    print(f'args: {args}')
     root_dir = Path(args.root_dir)
 
     if not root_dir.is_dir():
@@ -51,7 +50,7 @@ def parse_cmd_line_arguments():
         metavar="",
         action="store",
         type=int,
-        default=2,
+        default=3,
         help="How deep do you want the generator to go"
     )
     
