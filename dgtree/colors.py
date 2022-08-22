@@ -1,4 +1,7 @@
 
+# You can add / change colors by replacing this string: '\x1b[38;2;255;255;255m'
+# replace the brackets with Red, Green, Blue values of the color of your choosing
+# '\x1b[38;2;{R};{G};{B}m'
 
 class Colors:
 
