@@ -28,7 +28,6 @@ class Icons:
     MYSQL = '  '           # nf-dev
     POSTGRESQL = '  '      # nf-dev
     SQLITE = '  '          # nf-dev
-    GROOVY = '  '          # nf-dev
     LUA = '  '             # nf-seti
     RUST = '  '            # nf-dev
     RUBY = '  '            # nf-dev
