@@ -44,10 +44,7 @@ class _TreeGenerator:
     def _tree_body(self, directory, prefix=""):
 
         if len(directory.parents) > self.depth:
-            pass
-            # TODO: 
-            # calculate how many folders left
-            # add a number after the /
+           pass
 
         else:
        
@@ -72,8 +69,12 @@ class _TreeGenerator:
         return entries
 
     def _add_directory(self, directory, index, entries_count, prefix, connector):
+        dirs_over = ''
 
-        self._tree.append(f"{prefix}{connector}{Colors.FOLDER}{Icons.FOLDER_OPEN}{directory.name}{os.sep}{Colors.END}")
+        if len(directory.parents) > self.depth:
+            dirs_over = '..'
+
+        self._tree.append(f"{prefix}{connector}{Colors.FOLDER}{Icons.FOLDER_OPEN}{directory.name}{os.sep}{dirs_over}{Colors.END}")
 
         if index != entries_count - 1:
             prefix += PIPE_PREFIX
@@ -83,62 +84,61 @@ class _TreeGenerator:
         self._tree_body(directory=directory, prefix=prefix)
         #self._tree.append(prefix.rstrip()) # creates huge gaps between directories
 
+
     def _add_file(self, file, prefix, connector):
 
         match Path(file).suffix.lower():
-            case '.py':
+            case '.py':     # Pytohn
                 self._tree.append(f"{prefix}{connector}{Colors.PYTHON_YELLOW}{Icons.PYTHON}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.md':
+            case '.md':     # Markdown
                 self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.MARKDOWN}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.json':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.JSON}{file.name}{Colors.END}")
-            case '.html':
+            case '.json':   # JSON
+                self._tree.append(f"{prefix}{connector}{Colors.JSON}{Icons.JSON}{Colors.WHITE}{file.name}{Colors.END}")
+            case '.html':   # HTML
                 self._tree.append(f"{prefix}{connector}{Colors.HTML}{Icons.HTML}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.css':
+            case '.css':    # CSS
                 self._tree.append(f"{prefix}{connector}{Colors.CSS}{Icons.CSS}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.cs':
+            case '.cs':     # C#
                 self._tree.append(f"{prefix}{connector}{Colors.C_SHARP}{Icons.C_SHARP}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.java':
+            case '.java':   # JAVA
                 self._tree.append(f"{prefix}{connector}{Colors.JAVA_ORANGE}{Icons.JAVA}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.js':
+            case '.js':     # JavaScript
                 self._tree.append(f"{prefix}{connector}{Colors.JAVASCRIPT_YELLOW}{Icons.JAVASCRIPT}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.c':
+            case '.c':      # C
                 self._tree.append(f"{prefix}{connector}{Colors.CEE}{Icons.CEE}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.cpp':
+            case '.cpp':    # C++
                 self._tree.append(f"{prefix}{connector}{Colors.C_PLUS_PLUS}{Icons.C_PLUS_PLUS}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.php':
+            case '.php':    # PHP
                 self._tree.append(f"{prefix}{connector}{Colors.PHP}{Icons.PHP}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.swift':
+            case '.swift':  # Swift
                 self._tree.append(f"{prefix}{connector}{Colors.SWIFT}{Icons.SWIFT}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.r':
+            case '.r':      # R
                 self._tree.append(f"{prefix}{connector}{Colors.R_LANG}{Icons.R_LANG}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.go':
+            case '.go':     # GO
                 self._tree.append(f"{prefix}{connector}{Colors.GO}{Icons.GO}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.ts':
+            case '.ts':     # TypeScript
                 self._tree.append(f"{prefix}{connector}{Colors.TYPESCRIPT}{Icons.TYPESCRIPT}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.sc':
+            case '.sc':     # Scala
                 self._tree.append(f"{prefix}{connector}{Colors.SCALA}{Icons.SCALA}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.pl':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.PERL}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.hs':
+            case '.pl':     # Perl
+                self._tree.append(f"{prefix}{connector}{Colors.PERL}{Icons.PERL}{Colors.WHITE}{file.name}{Colors.END}")
+            case '.hs':     # Haskell
                 self._tree.append(f"{prefix}{connector}{Colors.HASKELL}{Icons.HASKELL}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.net':
+            case '.net':    # .NET
                 self._tree.append(f"{prefix}{connector}{Colors.DOTNET}{Icons.DOTNET}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.xml':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.XML}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.rb':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.RUBY}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.rs':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.RUST}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.lua':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.LUA}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.groovy':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.GROOVY}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.sqlite':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.SQLITE}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.sql':
-                self._tree.append(f"{prefix}{connector}{Colors.MARKDOWN}{Icons.MYSQL}{Colors.WHITE}{file.name}{Colors.END}")
-            case '.psql':
+            case '.xml':    # XML
+                self._tree.append(f"{prefix}{connector}{Colors.XML}{Icons.XML}{Colors.WHITE}{file.name}{Colors.END}")
+            case '.rb':     # Ruby
+                self._tree.append(f"{prefix}{connector}{Colors.RUBY}{Icons.RUBY}{Colors.WHITE}{file.name}{Colors.END}")
+            case '.rs':     # Rust
+                self._tree.append(f"{prefix}{connector}{Colors.RUST}{Icons.RUST}{Colors.WHITE}{file.name}{Colors.END}")
+            case '.lua':    # Lua
+                self._tree.append(f"{prefix}{connector}{Colors.LUA}{Icons.LUA}{Colors.WHITE}{file.name}{Colors.END}")
+            case '.sqlite': # SQLite
+                self._tree.append(f"{prefix}{connector}{Colors.SQLITE}{Icons.SQLITE}{Colors.WHITE}{file.name}{Colors.END}")
+            case '.sql':    # SQL
+                self._tree.append(f"{prefix}{connector}{Colors.MYSQL_BEER}{Icons.MYSQL}{Colors.WHITE}{file.name}{Colors.END}")
+            case '.psql':   # PostgreSQL
                 self._tree.append(f"{prefix}{connector}{Colors.POSTGRESQL}{Icons.POSTGRESQL}{Colors.WHITE}{file.name}{Colors.END}")
-            case _:
+            case _:         # Other
                 self._tree.append(f"{prefix}{connector}{Colors.FILE}{Icons.FILE}{Colors.WHITE}{file.name}{Colors.END}")
